@@ -724,6 +724,19 @@ arm_mover/fast:
 	$(MAKE) -f simple_arm/CMakeFiles/arm_mover.dir/build.make simple_arm/CMakeFiles/arm_mover.dir/build
 .PHONY : arm_mover/fast
 
+#=============================================================================
+# Target rules for targets named look_away
+
+# Build rule for target.
+look_away: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 look_away
+.PHONY : look_away
+
+# fast build rule for target.
+look_away/fast:
+	$(MAKE) -f simple_arm/CMakeFiles/look_away.dir/build.make simple_arm/CMakeFiles/look_away.dir/build
+.PHONY : look_away/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -780,6 +793,7 @@ help:
 	@echo "... simple_arm_generate_messages_nodejs"
 	@echo "... simple_arm_gennodejs"
 	@echo "... arm_mover"
+	@echo "... look_away"
 .PHONY : help
 
 
