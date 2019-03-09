@@ -36,9 +36,9 @@ int main()
 
     for (int i = 0; i < sizeof(measurements) / sizeof(measurements[0]); i++) {
         tie(mu, sig2) = measurement_update(mu, sig2, measurements[i], measurement_sig2);
-        printf("update:  [%f, %f]\n", mu, sig2);
+        printf("measurement update:  [%f, %f]\n", mu, sig2);
         tie(mu, sig2) = state_prediction(mu, sig2, motion[i], motion_sig2);
-        printf("predict: [%f, %f]\n", mu, sig2);
+        printf("state prediction: [%f, %f]\n", mu, sig2);
     }
 
     return 0;
