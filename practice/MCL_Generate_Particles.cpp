@@ -250,8 +250,8 @@ int main()
 
     //Move the robot and sense the environment afterwards by taking measurements from
     //each of the 8 pillars in the 2D map.
-    myrobot = myrobot.move(0.1, 5.0);
-    z = myrobot.sense();
+    myrobot = myrobot.move(0.1, 5.0); //Motion update of robot
+    z = myrobot.sense(); //Sensor update of robot
 
     // Simulate a robot motion for each of these particles
     Robot p2[n];
