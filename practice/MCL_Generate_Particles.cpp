@@ -244,18 +244,33 @@ int main()
         //cout << p[i].show_pose() << endl;
     }
 
+    //Re-initialize myrobot object and Initialize a measurment vector
+    myrobot = Robot();
+    vector<double> z;
+
+    //Move the robot and sense the environment afterwards by taking measurements from
+    //each of the 8 pillars in the 2D map.
+    myrobot = myrobot.move(0.1, 5.0);
+    z = myrobot.sense();
+
+    // Simulate a robot motion for each of these particles
+    Robot p2[n];
+    for (int i = 0; i < n; i++) {
+        p2[i] = p[i].move(0.1, 5.0);
+        p[i] = p2[i];
+    }
+
     //####   DON'T MODIFY ANYTHING ABOVE HERE! ENTER CODE BELOW ####
 
-    //Now, simulate motion for each particle
-    // Create a new particle set 'p2'
-    // Rotate each particle by 0.1 and move it forward by 5.0
-    // Assign 'p2' to 'p' and print the particle poses, each on a single line
-    Robot p2[n];
-    for (int i = 0; i < n; i++){
-        p2[i] = p[i].move(0.1,5.0);
-        p[i] = p2[i];
-        cout << p[i].show_pose() << endl;
+    //Generate particle weights depending on robot's measurement
+    //Print the particles that have been moved weights', each on a single line
+    double w[n];
+    for (int i = 0; i < n; i++) {
+        // Comparison of the moved particles' distance to 8 landmarks vs. Actual distance to 8 landmarks.
+        // This comparison will output a probability of likeliness that particle is in acutal robot position.
+        w[i] = p[i].measurement_prob(z); 
+        cout << w[i] << endl;
     }
-    
+
     return 0;
 }
