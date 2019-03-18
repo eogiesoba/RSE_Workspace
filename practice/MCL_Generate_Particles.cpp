@@ -267,7 +267,7 @@ int main()
     double w[n];
     for (int i = 0; i < n; i++) {
         // Comparison of the moved particles' distance to 8 landmarks vs. Actual distance to 8 landmarks.
-        // This comparison will output a probability of likeliness that particle is in acutal robot position.
+        // The higher the weight of the particle, the more likely that particle is in the actual position of the robot. 
         w[i] = p[i].measurement_prob(z); 
         cout << w[i] << endl;
     }
