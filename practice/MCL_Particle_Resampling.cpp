@@ -278,11 +278,16 @@ int main()
     double mw = max(w, n); //This will loop through array "w" and find the max weight.
     //cout << mw;
     for(int i=0; i < n; i++){
-        beta += gen_real_random() * 2 * mw;
+        beta += gen_real_random() * 2 * mw; //Generate random Beta value
         while (w[index] < beta){
             beta -= w[index];
-            index += 1;
+            index = mod((index + 1), n); // Will move through each index of all particles in a circle
         }
+        p3[i] = p[index]; // This will each particle that survived into the p3 array
+    }
+    for (int j=0; j < n; j++){ //This will loop through all the particles that survived and show/display each one.
+        p[j] = p3[j];
+        cout << p[j].show_pose() << endl;
     }
 
     return 0;
